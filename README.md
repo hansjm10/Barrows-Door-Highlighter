@@ -1,2 +1,2 @@
-# Example
-An example greeter plugin
+# Barrows Door Highlighter
+This is a plugin that highlights the locked and unlocked doors while in the Barrows. Allows you to view the correct path to take, at a quick glance. Based off of the original source code from iBelg.  
