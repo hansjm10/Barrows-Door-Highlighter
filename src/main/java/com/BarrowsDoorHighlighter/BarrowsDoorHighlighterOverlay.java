@@ -46,7 +46,7 @@ class BarrowsDoorHighlighterOverlay extends Overlay
     private BarrowsDoorHighlighterOverlay(Client client, BarrowsDoorHighlighter plugin, BarrowsDoorHighlighterConfig config)
     {
         setPosition(OverlayPosition.DYNAMIC);
-        setLayer(OverlayLayer.ABOVE_WIDGETS);
+        setLayer(OverlayLayer.UNDER_WIDGETS);
         this.client = client;
         this.plugin = plugin;
         this.config = config;
@@ -69,23 +69,20 @@ class BarrowsDoorHighlighterOverlay extends Overlay
             ObjectComposition objectComp = client.getObjectDefinition(door.getId());
             ObjectComposition impostor = objectComp.getImpostorIds() != null ? objectComp.getImpostor() : null;
 
-            if (impostor == null) {
-                continue;
-            }
+            if (impostor != null) {
+                final Shape polygon;
+                final boolean isUnlockedDoor = impostor.getActions()[0] != null;
+                final Color color = isUnlockedDoor ? Color.GREEN : Color.RED;
 
-            final Shape polygon;
-            final boolean isUnlockedDoor = impostor.getActions()[0] != null;
-            final Color color = isUnlockedDoor ? Color.GREEN : Color.RED;
+                if ((config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.UNLOCKED && !isUnlockedDoor)
+                        || (config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.LOCKED && isUnlockedDoor)) {
 
-            if ((config.highlightDoors() == BarrowsDoorHighlighterConfig.HighlightDoors.UNLOCKED && !isUnlockedDoor)
-                    || (config.highlightDoors() == BarrowsDoorHighlighterConfig.HighlightDoors.LOCKED && isUnlockedDoor)) {
-                continue;
-            }
+                    polygon = door.getConvexHull();
 
-            polygon = door.getConvexHull();
-
-            if (polygon != null) {
-                OverlayUtil.renderPolygon(graphics, polygon, color);
+                    if (polygon != null) {
+                        OverlayUtil.renderPolygon(graphics, polygon, color);
+                    }
+                }
             }
         }
     }
