@@ -72,7 +72,7 @@ class BarrowsDoorHighlighterOverlay extends Overlay
             if (impostor != null) {
                 final Shape polygon;
                 final boolean isUnlockedDoor = impostor.getActions()[0] != null;
-                final Color color = isUnlockedDoor ? Color.GREEN : Color.RED;
+                final Color color = isUnlockedDoor ? config.unlockedDoorColor() : config.lockedDoorColor();
 
                 if ((config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.UNLOCKED && !isUnlockedDoor)
                         || (config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.LOCKED && isUnlockedDoor)) {
