@@ -81,7 +81,8 @@ import static net.runelite.api.NullObjectID.NULL_20715;
 @PluginDescriptor(
         name = "Barrows Door Highlighter"
 )
-public class BarrowsDoorHighlighter extends Plugin {
+public class BarrowsDoorHighlighter extends Plugin
+ {
     static final ImmutableSet<Integer> DOOR_IDS = ImmutableSet.of(
             NULL_20681, NULL_20682, NULL_20683, NULL_20684, NULL_20685, NULL_20686, NULL_20687, NULL_20688,
             NULL_20689, NULL_20690, NULL_20691, NULL_20692, NULL_20693, NULL_20694, NULL_20695, NULL_20696,
@@ -94,39 +95,41 @@ public class BarrowsDoorHighlighter extends Plugin {
     private OverlayManager overlayManager;
     @Inject
     private BarrowsDoorHighlighterOverlay barrowsDoorHighlighterOverlay;
-
     @Override
-    protected void startUp() throws Exception {
+    protected void startUp() throws Exception
+    {
         overlayManager.add(barrowsDoorHighlighterOverlay);
     }
-
     @Override
-    protected void shutDown() throws Exception {
+    protected void shutDown() throws Exception
+    {
         doors.clear();
     }
-
     @Subscribe
-    public void onGameStateChanged(GameStateChanged gameStateChanged) {
-        if (gameStateChanged.getGameState() == GameState.LOADING) {
+    public void onGameStateChanged(GameStateChanged gameStateChanged)
+    {
+        if (gameStateChanged.getGameState() == GameState.LOADING)
+        {
             doors.clear();
         }
     }
-
     @Provides
-    BarrowsDoorHighlighterConfig provideConfig(ConfigManager configManager) {
+    BarrowsDoorHighlighterConfig provideConfig(ConfigManager configManager)
+    {
         return configManager.getConfig(BarrowsDoorHighlighterConfig.class);
     }
-
     @Subscribe
-    public void onWallObjectSpawned(WallObjectSpawned event) {
+    public void onWallObjectSpawned(WallObjectSpawned event)
+    {
         WallObject wallObject = event.getWallObject();
-        if (DOOR_IDS.contains(wallObject.getId())) {
+        if (DOOR_IDS.contains(wallObject.getId())) 
+        {
             doors.add(wallObject);
         }
     }
-
     @Subscribe
-    public void onWallObjectDespawned(WallObjectDespawned event) {
+    public void onWallObjectDespawned(WallObjectDespawned event)
+    {
         WallObject wallObject = event.getWallObject();
         doors.remove(wallObject);
     }

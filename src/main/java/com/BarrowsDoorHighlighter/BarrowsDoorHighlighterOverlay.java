@@ -58,7 +58,6 @@ class BarrowsDoorHighlighterOverlay extends Overlay
         {
             renderDoors(graphics);
         }
-
         return null;
     }
 
@@ -68,18 +67,17 @@ class BarrowsDoorHighlighterOverlay extends Overlay
         {
             ObjectComposition objectComp = client.getObjectDefinition(door.getId());
             ObjectComposition impostor = objectComp.getImpostorIds() != null ? objectComp.getImpostor() : null;
-
-            if (impostor != null) {
+            if (impostor != null)
+            {
                 final Shape polygon;
                 final boolean isUnlockedDoor = impostor.getActions()[0] != null;
-                final Color color = isUnlockedDoor ? config.unlockedDoorColor() : config.lockedDoorColor();
-
+                final Color color = isUnlockedDoor ? Color.GREEN : Color.RED;
                 if ((config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.UNLOCKED && !isUnlockedDoor)
-                        || (config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.LOCKED && isUnlockedDoor)) {
-
+                        || (config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.LOCKED && isUnlockedDoor)) 
+                {
                     polygon = door.getConvexHull();
-
-                    if (polygon != null) {
+                    if (polygon != null) 
+                    {
                         OverlayUtil.renderPolygon(graphics, polygon, color);
                     }
                 }
