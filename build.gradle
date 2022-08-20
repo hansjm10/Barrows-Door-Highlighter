@@ -1,23 +1,13 @@
 plugins {
 	id 'java'
-	id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
 repositories {
 	mavenLocal()
 	maven {
 		url = 'https://repo.runelite.net'
-
 	}
 	mavenCentral()
-}
-
-shadowJar {
-	from sourceSets.test.output
-	configurations = [project.configurations.testRuntimeClasspath]
-	manifest {
-		attributes "Main-Class": "com.BarrowsDoorHighlighter.BarrowsDoorHighlighterTest"
-	}
 }
 
 def runeLiteVersion = '1.8.30'
@@ -33,7 +23,7 @@ dependencies {
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
-group = 'com.barrowsdoorhighlighter'
+group = '${group_id}'
 version = '1.0.1'
 sourceCompatibility = '1.8'
 
