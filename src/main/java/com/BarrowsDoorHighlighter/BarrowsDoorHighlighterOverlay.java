@@ -54,7 +54,7 @@ class BarrowsDoorHighlighterOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (client.getPlane() == 0 && config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.NEITHER)
+        if (client.getTopLevelWorldView().getPlane() == 0 && config.highlightDoors() != BarrowsDoorHighlighterConfig.HighlightDoors.NEITHER)
         {
             renderDoors(graphics);
         }
