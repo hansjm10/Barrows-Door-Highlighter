@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = '1.8.30'
+def runeLiteVersion = 'latest.release'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -29,4 +29,18 @@ sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
+}
+
+tasks.register('run', JavaExec) {
+	group = 'runelite'
+	description = 'Launches RuneLite with the plugin loaded from the local source tree.'
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'com.BarrowsDoorHighlighter.BarrowsDoorHighlighterTest'
+	enableAssertions = true
+}
+
+tasks.register('runClient') {
+	group = 'runelite'
+	description = 'Alias for the official run task.'
+	dependsOn tasks.named('run')
 }
