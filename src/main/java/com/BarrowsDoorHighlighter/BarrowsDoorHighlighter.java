@@ -43,39 +43,38 @@ import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.runelite.api.NullObjectID.NULL_20681;
-import static net.runelite.api.NullObjectID.NULL_20682;
-import static net.runelite.api.NullObjectID.NULL_20683;
-import static net.runelite.api.NullObjectID.NULL_20684;
-import static net.runelite.api.NullObjectID.NULL_20685;
-import static net.runelite.api.NullObjectID.NULL_20686;
-import static net.runelite.api.NullObjectID.NULL_20687;
-import static net.runelite.api.NullObjectID.NULL_20688;
-import static net.runelite.api.NullObjectID.NULL_20689;
-import static net.runelite.api.NullObjectID.NULL_20690;
-import static net.runelite.api.NullObjectID.NULL_20691;
-import static net.runelite.api.NullObjectID.NULL_20692;
-import static net.runelite.api.NullObjectID.NULL_20693;
-import static net.runelite.api.NullObjectID.NULL_20694;
-import static net.runelite.api.NullObjectID.NULL_20695;
-import static net.runelite.api.NullObjectID.NULL_20696;
-import static net.runelite.api.NullObjectID.NULL_20700;
-import static net.runelite.api.NullObjectID.NULL_20701;
-import static net.runelite.api.NullObjectID.NULL_20702;
-import static net.runelite.api.NullObjectID.NULL_20703;
-import static net.runelite.api.NullObjectID.NULL_20704;
-import static net.runelite.api.NullObjectID.NULL_20705;
-import static net.runelite.api.NullObjectID.NULL_20706;
-import static net.runelite.api.NullObjectID.NULL_20707;
-import static net.runelite.api.NullObjectID.NULL_20708;
-import static net.runelite.api.NullObjectID.NULL_20709;
-import static net.runelite.api.NullObjectID.NULL_20710;
-import static net.runelite.api.NullObjectID.NULL_20711;
-import static net.runelite.api.NullObjectID.NULL_20712;
-import static net.runelite.api.NullObjectID.NULL_20713;
-import static net.runelite.api.NullObjectID.NULL_20714;
-import static net.runelite.api.NullObjectID.NULL_20715;
-
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_A_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_A_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_B_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_B_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_C_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_C_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_D_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_D_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_E_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_E_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_F_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_F_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_G_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_G_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_H_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_H_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_I_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_I_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_J_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_J_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_K_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_K_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_L_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_L_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_M_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_M_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_N_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_N_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_O_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_O_R;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_P_L;
+import static net.runelite.api.gameval.ObjectID.BARROWS_DOOR_P_R;
 
 @Slf4j
 @PluginDescriptor(
@@ -84,10 +83,14 @@ import static net.runelite.api.NullObjectID.NULL_20715;
 public class BarrowsDoorHighlighter extends Plugin
  {
     static final ImmutableSet<Integer> DOOR_IDS = ImmutableSet.of(
-            NULL_20681, NULL_20682, NULL_20683, NULL_20684, NULL_20685, NULL_20686, NULL_20687, NULL_20688,
-            NULL_20689, NULL_20690, NULL_20691, NULL_20692, NULL_20693, NULL_20694, NULL_20695, NULL_20696,
-            NULL_20700, NULL_20701, NULL_20702, NULL_20703, NULL_20704, NULL_20705, NULL_20706, NULL_20707,
-            NULL_20708, NULL_20709, NULL_20710, NULL_20711, NULL_20712, NULL_20713, NULL_20714, NULL_20715
+            BARROWS_DOOR_A_R, BARROWS_DOOR_B_R, BARROWS_DOOR_C_R, BARROWS_DOOR_D_R,
+            BARROWS_DOOR_E_R, BARROWS_DOOR_F_R, BARROWS_DOOR_G_R, BARROWS_DOOR_H_R,
+            BARROWS_DOOR_I_R, BARROWS_DOOR_J_R, BARROWS_DOOR_K_R, BARROWS_DOOR_L_R,
+            BARROWS_DOOR_M_R, BARROWS_DOOR_N_R, BARROWS_DOOR_O_R, BARROWS_DOOR_P_R,
+            BARROWS_DOOR_A_L, BARROWS_DOOR_B_L, BARROWS_DOOR_C_L, BARROWS_DOOR_D_L,
+            BARROWS_DOOR_E_L, BARROWS_DOOR_F_L, BARROWS_DOOR_G_L, BARROWS_DOOR_H_L,
+            BARROWS_DOOR_I_L, BARROWS_DOOR_J_L, BARROWS_DOOR_K_L, BARROWS_DOOR_L_L,
+            BARROWS_DOOR_M_L, BARROWS_DOOR_N_L, BARROWS_DOOR_O_L, BARROWS_DOOR_P_L
     );
     @Getter
     private final Set<WallObject> doors = new HashSet<>();
