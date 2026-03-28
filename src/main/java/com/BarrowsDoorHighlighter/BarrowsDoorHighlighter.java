@@ -106,6 +106,7 @@ public class BarrowsDoorHighlighter extends Plugin
     @Override
     protected void shutDown() throws Exception
     {
+        overlayManager.remove(barrowsDoorHighlighterOverlay);
         doors.clear();
     }
     @Subscribe
